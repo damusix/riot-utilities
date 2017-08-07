@@ -1,0 +1,48 @@
+{
+  "name": "riot-utilities",
+  "version": "1.0.0",
+  "description": "Utilities to be used with RiotJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_module/.bin/grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damusix/riot-utilities.git"
+  },
+  "keywords": [
+    "riot",
+    "riotjs",
+    "utilities"
+  ],
+  "author": "Danilo Alonso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damusix/riot-utilities/issues"
+  },
+  "homepage": "https://github.com/damusix/riot-utilities#readme",
+  "devDependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "form-serialize": "^0.7.2",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-riot": "^0.1.8",
+    "karma": "^1.7.0",
+    "karma-chai": "^0.1.0",
+    "karma-coverage": "^1.1.1",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.3",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-riot": "^2.0.0",
+    "phantomjs-polyfill-object-assign": "0.0.2",
+    "riot": "^3.6.1",
+    "riot-route": "^3.1.2"
+  }
+}
