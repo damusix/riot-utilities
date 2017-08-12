@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-riot');
 
     // Isolate tasks
-    const js = ['riot'];
+    const js = ['riot', 'browserify'];
     const watch = js.concat('watch');
 
     grunt.registerTask('build', js);
@@ -26,9 +26,25 @@ module.exports = function (grunt) {
             }
         },
 
+        browserify: {
+            development: {
+                src: [
+                    // 'tags.js',
+                    'index.js'
+                ],
+                dest: './dist/riot-utils.js',
+                options: {
+                    browserifyOptions: { debug: true },
+                    transform: [
+                        ['babelify', { presets:['es2015'] }]
+                    ]
+                }
+            }
+        },
+
         watch: {
             riot: {
-                files: ['client/**/*.tag'],
+                files: ['lib/**/*.tag', 'lib/**/*.js', 'index.js'],
                 tasks: js,
                 options: {
 

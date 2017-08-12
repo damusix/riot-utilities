@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testing</title>
+
+    <style type="text/css">
+
+        .field {
+
+            padding: 10px;
+            display: inline-block;
+            border: 1px solid #eee;
+            max-width: 330px;
+            margin: 0 auto 10px;
+        }
+
+        .field label,
+        .field input  {
+
+            width: 150px;
+            padding: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .field label {
+
+            text-align: right;
+        }
+
+        .field.error { border-color: #c00; color: #c00; }
+        .field.info { border-color: #05c; color: #05c; }
+        .field.success { border-color: #0a0; color: #0a0; }
+        .field.warning { border-color: #aa0; color: #aa0; }
+
+        .field small {
+
+            font-size: 10px;
+            text-align: right;
+            display: block;
+            padding: 5px;
+        }
+
+        .hide { display: none !important; }
+
+    </style>
+</head>
+<body>
+
+    <debugger></debugger>
+
+    <form id='testForm' name='testForm'>
+
+        <div class="field">
+
+            <label for='alphanum'>Alphanumerical</label>
+            <input type='text' name='alphanum' validate='alphanum' on='keyup blur' required />
+            <small class='help hide'>Help for alphanum regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='alphanum'>Alphanumerical Spaces</label>
+            <input type='text' name='alphanumspace' validate='alphanumspace' on='keyup blur' required />
+            <small class='help hide'>Help for alphanumspace regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='name'>Name</label>
+            <input type='text' name='name' validate='name' on='keyup blur' required />
+            <small class='help hide'>Help for name regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='username'>Username</label>
+            <input type='text' name='username' validate='username' on='keyup blur' required />
+            <small class='help hide'>Help for username regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='fqdn'>FQDN</label>
+            <input type='text' name='fqdn' validate='fqdn' on='keyup blur' required />
+            <small class='help hide'>Help for fqdn regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='tld'>TLD</label>
+            <input type='text' name='tld' validate='tld' on='keyup blur' required />
+            <small class='help hide'>Help for tld regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='phone'>Phone</label>
+            <input type='text' name='phone' validate='phone' on='keyup blur' required />
+            <small class='help hide'>Help for phone regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='email'>Email</label>
+            <input type='text' name='email' validate='email' on='keyup blur' required />
+            <small class='help hide'>Help for email regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='equals1'>Equals 1</label>
+            <input type='text' name='equals1' on='keyup blur' required />
+            <small class='help hide'>Help for equals1 regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='equals2'>Equals 2</label>
+            <input type='text' name='equals2' equals='[name=equals1' on='keyup blur' required />
+            <small class='help hide'>Help for equals2 regex</small>
+        </div>
+
+        <div class="field">
+
+            <label for='regex'>Regex</label>
+            <input type='text' name='regex' regex='regex' on='keyup blur' required />
+            <small class='help hide'>Help for regex regex</small>
+        </div>
+
+        <div class='field'>
+
+            <button>Submit</button>
+        </div>
+    </form>
+
+    <script type='text/javascript' src='node_modules/riot/riot+compiler.js'></script>
+
+    <script type='text/javascript' src='dist/riot-utils.js'></script>
+
+
+    <script type='text/javascript'>
+
+
+        RiotUtils.Observer.configure({
+
+            debug: true,
+            debugFn: function (obj, fn, action, args) {
+
+                if (app.debugger && app.debugger.on) {
+
+                    app.debugger.trigger('state', obj, fn, action, args);
+                }
+            }
+        });
+
+        var app = { name: 'App' };
+        var form = document.querySelector('#testForm');
+
+        RiotUtils.ActionForms.bind(form);
+
+        RiotUtils.Observer(app, {});
+
+        riot.mount('*');
+    </script>
+</body>
+</html>
