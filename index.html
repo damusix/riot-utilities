@@ -3,6 +3,8 @@
 <head>
     <title>Testing</title>
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style type="text/css">
 
         .field {
@@ -134,8 +136,25 @@
         </div>
     </form>
 
-    <script type='text/javascript' src='node_modules/riot/riot+compiler.js'></script>
+    <icon refresh spin></icon>
+    <icon users 2x></icon>
 
+    <pretty-code type='js'>
+        { a: 'b', c: 'd', e: 'f', g: 'h' }
+    </pretty-code>
+
+
+    <pretty-code type='css'>
+        { a: 'b', c: 'd', e: 'f', g: 'h' }
+    </pretty-code>
+
+
+    <pretty-code type='html' decode>
+        <div>div<b>b<i>i</i></b><p>p<strike>strike</strike></p></div>
+    </pretty-code>
+
+
+    <script type='text/javascript' src='node_modules/riot/riot+compiler.js'></script>
     <script type='text/javascript' src='dist/riot-utils.js'></script>
 
 

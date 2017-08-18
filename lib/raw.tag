@@ -1,3 +1,3 @@
 <raw>
-    this.root.innerHTML = this.opts.content
+    this.root.innerHTML = this.__.innerHTML
 </raw>

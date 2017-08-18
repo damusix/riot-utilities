@@ -1,6 +1,6 @@
 'use strict';
 
-import * as Beautify from 'js-beautify';
+import * as Beautify from './lib/prettifier';
 
 import { Observer } from './lib/observer';
 import * as ActionForms from './lib/action-forms';
