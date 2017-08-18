@@ -75,6 +75,24 @@ riot.tag2('icon', '<i class="fa {icon}"></i>', '', '', function(opts) {
     this.icon = Object.keys(this.opts).map(i => `fa-${i}`).join(' ')
 });
 
+riot.tag2('pretty-code', '', '', '', function(opts) {
+
+        const self = this;
+        const defaultOpts = {
+
+            "indent_size": 4,
+            "indent_char": " "
+        };
+
+        const type = self.opts.type || 'js';
+        const beautifyOpts = Object.assign({}, defaultOpts, self.opts);
+
+        this.on('mount', () => {
+
+            RiotUtils.Beautify[type];
+        })
+});
+
 riot.tag2('raw', '', '', '', function(opts) {
     this.root.innerHTML = this.opts.content
 });
