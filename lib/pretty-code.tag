@@ -22,10 +22,9 @@
 
         this.on('mount', () => {
 
-            const prettify = {
-                prettified: RiotUtils.Beautify[type](raw, beautifyOpts),
-                raw
-            }
+            const prettified = RiotUtils.Beautify[type](raw, beautifyOpts);
+
+            const prettify = { prettified, raw }
 
             if (before && before.constructor === Function) {
 
@@ -35,9 +34,7 @@
             // Escape HTML to HTMLEntities when passing raw HTML
             if (decode && type === 'html') {
 
-                prettify.prettified = prettify.prettified.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-                   return '&#'+i.charCodeAt(0)+';';
-                });
+                prettify.prettified = RiotUtils.Beautify.escapeHTML(prettify.prettified)
             }
 
             self.refs.code.innerHTML = prettify.prettified;

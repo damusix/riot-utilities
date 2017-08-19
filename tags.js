@@ -95,10 +95,9 @@ riot.tag2('pretty-code', '<pre><code ref="code"></code></pre>', '', '', function
 
         this.on('mount', () => {
 
-            const prettify = {
-                prettified: RiotUtils.Beautify[type](raw, beautifyOpts),
-                raw
-            }
+            const prettified = RiotUtils.Beautify[type](raw, beautifyOpts);
+
+            const prettify = { prettified, raw }
 
             if (before && before.constructor === Function) {
 
@@ -107,9 +106,7 @@ riot.tag2('pretty-code', '<pre><code ref="code"></code></pre>', '', '', function
 
             if (decode && type === 'html') {
 
-                prettify.prettified = prettify.prettified.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-                   return '&#'+i.charCodeAt(0)+';';
-                });
+                prettify.prettified = RiotUtils.Beautify.escapeHTML(prettify.prettified)
             }
 
             self.refs.code.innerHTML = prettify.prettified;
@@ -121,9 +118,5 @@ riot.tag2('pretty-code', '<pre><code ref="code"></code></pre>', '', '', function
 
             RiotUtils.Beautify.trigger('prettified', prettify);
         })
-});
-
-riot.tag2('raw', '', '', '', function(opts) {
-    this.root.innerHTML = this.__.innerHTML
 });
 
