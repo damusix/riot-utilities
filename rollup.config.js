@@ -1,17 +1,22 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
+import babelrc from 'babelrc-rollup';
+import riot  from 'rollup-plugin-riot';
 import pkg from './package.json';
 
 export default [
 	// browser-friendly UMD build
 	{
-		entry: 'src/main.js',
+		entry: 'lib/index.js',
 		dest: pkg.browser,
-		format: 'umd',
-		moduleName: 'howLongUntilLunch',
+		format: 'iife',
+		moduleName: 'RiotUtilities',
 		plugins: [
-			resolve(), // so Rollup can find `ms`
-			commonjs() // so Rollup can convert `ms` to an ES module
+            riot(),
+			resolve(),
+			commonjs(),
+            babel(babelrc()),
 		]
 	},
 
@@ -21,8 +26,8 @@ export default [
 	// builds from a single configuration where possible, using
 	// the `targets` option which can specify `dest` and `format`)
 	{
-		entry: 'src/main.js',
-		external: ['ms'],
+		entry: 'lib/index.js',
+		external: ['js-beautify'],
 		targets: [
 			{ dest: pkg.main, format: 'cjs' },
 			{ dest: pkg.module, format: 'es' }
