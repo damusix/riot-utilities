@@ -135,6 +135,11 @@
             opacity: 1;
         }
 
+        :scope select {
+
+            width: auto;
+        }
+
         :scope.close {
 
             height: 15px;
